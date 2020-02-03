@@ -1,0 +1,56 @@
+
+{% extends "layout.html" %}
+{% block content %}
+<body style="background-color: lightgray">
+    <div class="column" style="background-color:#00ff80; width: 20%">
+        <h3 style="border: 2px solid Tomato;"> <center>OCR Configuration </center> </h3>
+
+        <h4> Input path </h4>
+        <form class="form" action="{{url_for('ocr_run')}}" method="POST">
+            <input type="text" name='test'><br>
+            <h4> Select OCR engine </h4>
+            <input type="radio" name="food" [(ngModel)]="document.valid" [value]="TRUE">Tesseract
+            <input type="radio" name="food" [(ngModel)]="document.valid" [value]="FALSE">Azure <br>
+
+            <h4> Activate DLA </h4>
+            <input type="radio" name="food" [(ngModel)]="document.valid" [value]="TRUE">True
+            <input type="radio" name="food" [(ngModel)]="document.valid" [value]="FALSE">False <br>
+
+            <h4> Select DLA model </h4>
+            <input type="radio" name="food" [(ngModel)]="document.valid" [value]="TRUE">Neural Network
+            <input type="radio" name="food" [(ngModel)]="document.valid" [value]="FALSE">Traditional <br>
+
+            <h4> Correct Orientation </h4>
+            <input type="radio" name="food" [(ngModel)]="document.valid" [value]="TRUE">True
+            <input type="radio" name="food" [(ngModel)]="document.valid" [value]="FALSE">False <br>
+
+            <h4> Table Extract </h4>
+            <input type="radio" name="food" [(ngModel)]="document.valid" [value]="TRUE">True
+            <input type="radio" name="food" [(ngModel)]="document.valid" [value]="FALSE">False <br>
+
+            <h4> Check box Extract </h4>
+            <input type="radio" name="food" [(ngModel)]="document.valid" [value]="TRUE">True
+            <input type="radio" name="food" [(ngModel)]="document.valid" [value]="FALSE">False 
+            <br>
+
+            <br><input type = "submit" value="run">
+        </form>
+
+
+    </div>
+
+    <div class="row" style="background-color: silver width: 80%">
+        <form action="{{url_for('ocr_validation')}}" method="POST">
+        <h4> Enter the document no: </h4>
+        <input type="text" name="document_number">
+        <input type = "submit" value="validate">
+        <h4> Total documents: 2 </h4><br>
+        <h4> Total completed: 1 </h4><br>
+        <h4> Average run time: 5 secs </h4><br>
+        <h4> Last document run: [20-191831341]ThirdPartyPoliceReport </h4><br>
+        
+        </div>
+    </div>
+
+</body>
+{% endblock content %}

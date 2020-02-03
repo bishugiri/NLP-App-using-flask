@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+	*{
+		box-sizing: border-box;
+	}
+.column {
+	float:left;
+	width: 100%;
+	padding: 10px;
+	height: 800px;
+}
+.row {
+	width: 100%;
+}
+.header {
+	background-color:skyblue;
+	text-align: center;
+	height: 50px;
+}
+
+</style>
+
+<body>
+	<header class="header">
+		<h1> NLP Extraction </h1>
+	</header>
+		<div class="row">
+  			<div class="column" style="background-color:silver; width: 25%">
+  				<h1 style="border: 2px solid Tomato;"> <center>Parameters </center> </h1>
+				<h4> Input path </h4>
+
+<form action = "{{ url_for('feature')}}" method = "POST" class="form" >
+                <input type="text" name='path'><br>
+                <h4> Search Keyword </h4>
+                <input type = "text" name="keyword"><br>
+                <h4> Filter for case </h4>
+                <select name = "case">
+                		<option value = 'upper'>upper</option>
+						<option value = 'lower'>lower</option>
+						<option value = 'proper'>proper</option>
+						<option value = 'all'>all</option>
+                </select>
+                <h4> Select search range </h4>
+                <input type = "text" name="range"><br>
+                <br><input type = "submit" value="confirm">
+            </form>
+ 
+</div>
+<div class = "column" style="background-color: lightgray; width: 75%">
+<div class = "row" style="background-color: lightgray; width:70% height:10%">
+{% for table in tables %}
+            {{titles[loop.index]}}
+            {{ table|safe }}
+{% endfor %}
+<br></div>
+<div class = "row" style="background-color:lightgray; width:30% height:10%">
+	{% for table in summary %}
+            {{ table|safe }}
+{% endfor %}
+ </div>
+</div>
+</body>
+</html>
+
+
+# home template
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>OCR_NLP Dashboard</title>
+<meta charset="utf-8">
+<style>
+	*{
+		box-sizing: border-box;
+	}
+.column {
+	float:left;
+	width: 100%;
+	padding: 10px;
+	height: 800px;
+}
+.row {
+	width: 100%;
+}
+.header {
+	background-color:skyblue;
+	text-align: center;
+	height: 50px;
+}
+.equal-width td{width: 50%;}
+
+table {border-collapse:collapse; table-layout:fixed; width:800px;}
+table td {width:100px; word-wrap:break-word;}
+
+
+</style>
+
+<body>
+	<header class="header">
+		<h1> NLP Extraction </h1>
+	</header>
+		<div class="row">
+  			<div class="column" style="background-color:#00ff80; width: 25%">
+  				<h1 style="border: 2px solid Tomato;"> <center>Parameters </center> </h1>
+				<h4> Input path </h4>
+
+<form action = "{{ url_for('main_func')}}" method = "POST" class="form" >
+                <input type="text" name='path'><br>
+                <h4> Search Keyword </h4>
+                <input type = "text" name="keyword"><br>
+                <h4> Filter for case </h4>
+                <select name = "case">
+                		<option value = 'upper'>upper</option>
+						<option value = 'lower'>lower</option>
+						<option value = 'proper'>proper</option>
+						<option value = 'all' selected>all</option>
+                </select>
+                <h4> Select search range </h4>
+                <input type = "text" name="range"><br>
+                <br><input type = "submit" value="confirm">
+            </form>
+ 
+</div>
+<div class = "column" style="background-color: lightgray; width: 75%"> </div>
+</body>
+</html>
+
+#### result.html ###### 
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>OCR_NLP Dashboard</title>
+<meta charset="utf-8">
+<style>
+	*{
+		box-sizing: border-box;
+	}
+.column {
+	float:left;
+	width: 100%;
+	padding: 10px;
+	height: 800px;
+}
+.row {
+	width: 100%;
+}
+.header {
+	background-color:skyblue;
+	text-align: center;
+	height: 50px;
+}
+.equal-width td{width: 50%;}
+
+table {border-collapse:collapse; table-layout:fixed; width:800px;}
+table td {width:100px; word-wrap:break-word;}
+table th {text-align: center;}
+
+
+</style>
+
+<body>
+	<header class="header">
+		<h1> NLP Extraction </h1>
+	</header>
+		<div class="row">
+  			<div class="column" style="background-color:#00ff80; width: 25%">
+  				<h1 style="border: 2px solid Tomato;"> <center>Parameters </center> </h1>
+				<h4> Input path </h4>
+
+<form action = "{{ url_for('main_func')}}" method = "POST" class="form" >
+                <input type="text" name='path'><br>
+                <h4> Search Keyword </h4>
+                <input type = "text" name="keyword"><br>
+                <h4> Filter for case </h4>
+                <select name = "case">
+                		<option value = 'upper'>upper</option>
+						<option value = 'lower'>lower</option>
+						<option value = 'proper'>proper</option>
+						<option value = 'all' selected>all</option>
+                </select>
+                <h4> Select search range </h4>
+                <input type = "text" name="range"><br>
+                <br><input type = "submit" value="confirm">
+            </form>
+ 
+</div>
+<div class = "column" style="background-color: lightgray; width: 75%">
+<div class = "row" style="background-color: lightgray; width:500px height:100px text-align:center;">
+<table class="maintable">
+	{% for table in tables %}
+            {{titles[loop.index]}}
+            {{ table|safe }}
+{% endfor %}</table>
+<br><br></div>
+<div class = "row" style="background-color:lightgray; width:20px height:20px;">
+	{% for table in summary %}
+            {{ table|safe }}
+
+{% endfor %}
+<h4> missing percentage: {{missing}} </h4>
+ </div>
+</div>
+</body>
+</html>
+
+
+<!-- 16th January backup -->
+
+@app.route('/regex', methods = ['POST'])
+def reg_ex_func():
+	if request.method == 'POST':
+		path = request.form['path']
+		s = request.form['regx']
+		keywd = request.form['keyword']
+		file_list = os.listdir(path+'/Input')
+		df = pd.DataFrame()
+		for i in file_list:
+			with open(path+"/Input/"+i) as f:
+				txt = f.read()
+				tempdf = pd.DataFrame({'claimno':[i], 'text':[txt], keywd:[regex_output(txt,s)]})
+				df = pd.concat([df, tempdf], axis = 0)
+
+		df.reset_index(inplace = True)
+		del df['index']
+		df.to_csv(path+'/Output/df.csv')
+		missing_percentage = int((df[keywd].isnull().sum())*100/df.shape[0])
+		return render_template('nlp_result.html', summary = [df[[keywd]].describe().to_html(classes='data')], 
+			tables = [df.head().to_html(classes ='data')], titles = df.columns.values, missing = missing_percentage)
+
+
+@app.route('/result', methods = ['POST'])
+def main_func():
+	if request.method == 'POST':
+		
+		path = request.form['path']
+		keywd = request.form['keyword']
+		cs = request.form['case']
+		rg = int(request.form['range'])
+		regx = request.form['regx']
+
+		file_list = os.listdir(path+'/Input')
+		df = pd.DataFrame()
+		for i in file_list:
+			with open(path+"/Input/"+i) as f:
+				txt = f.read()
+				tempdf = pd.DataFrame({'claimno':[i], 'text':[txt], keywd:[feature(txt,keywd,rg,cs)]})
+				df = pd.concat([df, tempdf], axis = 0)
+
+		df.reset_index(inplace = True)
+		del df['index']
+		df.to_csv(path+'/Output/df.csv')
+		missing_percentage = int((df[keywd].isnull().sum())*100/df.shape[0])
+		return render_template('nlp_result.html', summary = [df[[keywd]].describe().to_html(classes='data')], 
+			tables = [df.head().to_html(classes ='data')], titles = df.columns.values, missing = missing_percentage)
+
+
+
+@app.route('/result', methods = ['POST'])
+def main_func():
+	
+	if request.method == 'POST':
+		
+		path = request.form['path']
+		ext_ = request.form['extraction']
+		keywd = request.form['keyword']
+
+		if ext_=="keyword":
+
+			cs = request.form['case']
+			rg = int(request.form['range'])
+
+			file_list = os.listdir(path+'/Input')
+			df = pd.DataFrame()
+			for i in file_list:
+				with open(path+"/Input/"+i) as f:
+					txt = f.read()
+					tempdf = pd.DataFrame({'claimno':[i], 'text':[txt], keywd:[feature(txt,keywd,rg,cs)]})
+					df = pd.concat([df, tempdf], axis = 0)
+
+			df.reset_index(inplace = True)
+			del df['index']
+			df.to_csv(path+'/Output/df.csv')
+			missing_percentage = int((df[keywd].isnull().sum())*100/df.shape[0])
+			return render_template('nlp_result.html', summary = [df[[keywd]].describe().to_html(classes='data')], 
+				tables = [df.head().to_html(classes ='data')], titles = df.columns.values, missing = missing_percentage)
+
+		elif ext_=='regex':
+
+			pattern = request.form['regx_pattern']
+
+			file_list = os.listdir(path+'/Input')
+			df = pd.DataFrame()
+			for i in file_list:
+				with open(path+"/Input/"+i) as f:
+					txt = f.read()
+					tempdf = pd.DataFrame({'claimno':[i], 'text':[txt], keywd:[regex_output(txt,pattern)]})
+					df = pd.concat([df, tempdf], axis = 0)
+
+			df.reset_index(inplace = True)
+			del df['index']
+			df.to_csv(path+'/Output/df.csv')
+			missing_percentage = int((df[keywd].isnull().sum())*100/df.shape[0])
+			return render_template('nlp_result.html', summary = [df[[keywd]].describe().to_html(classes='data')], 
+				tables = [df.head().to_html(classes ='data')], titles = df.columns.values, missing = missing_percentage)
+

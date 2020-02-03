@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>OCR_NLP Dashboard</title>
+<meta charset="utf-8">
+<style>
+	*{
+		box-sizing: border-box;
+	}
+.column {
+	float:left;
+	width: 100%;
+	padding: 10px;
+	height: 800px;
+}
+.row {
+	width: 100%;
+	text-align: left;
+}
+.header {
+	background-color:skyblue;
+	text-align: center;
+	height: 50px;
+}
+.equal-width td{width: 50%;}
+
+table {border-collapse:collapse; table-layout:fixed; width:800px;}
+table td {width:100px; word-wrap:break-word;}
+
+</style>
+<body>
+
+{% block content %}{% endblock %}
+
+</body>

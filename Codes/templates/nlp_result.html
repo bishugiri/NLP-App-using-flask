@@ -1,0 +1,28 @@
+<style type="text/css">
+.input-group-field{
+  width: 60px;
+  height: 20px;
+  vertical-align: right;
+}
+</style>
+
+{% extends "layout.html" %}
+{% block content %}
+
+<div class = "row" style="background-color: lightgray; width:500px height:100px text-align:center;">
+<table>
+	{% for table in tables %}
+            {{titles[loop.index]}}
+            {{ table|safe }}
+{% endfor %}</table>
+<br><br></div>
+<div class = "row" style="background-color:lightgray; width:20px height:20px;">
+	{% for table in summary %}
+            {{ table|safe }}
+
+{% endfor %}
+<h4> missing percentage: {{missing}} </h4>
+ </div>
+</div>
+{% endblock content %}
+

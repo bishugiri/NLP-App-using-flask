@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>OCR_NLP Dashboard</title>
+<meta charset="utf-8">
+<style>
+	*{
+		box-sizing: border-box;
+	}
+.column {
+	float:left;
+	width: 100%;
+	padding: 10px;
+	height: 800px;
+}
+.row {
+	width: 100%;
+	text-align: left;
+}
+.header {
+	background-color:skyblue;
+	text-align: center;
+	height: 50px;
+}
+.equal-width td{width: 50%;}
+
+.square{
+  height: 50px;
+  width: 50px;
+  background-color: red;
+}
+
+table {border-collapse:collapse; table-layout:fixed; width:800px;}
+table td {width:100px; word-wrap:break-word;}
+
+</style>
+<body>
+
+
+	<header class="header">
+		<h1> NLP Extraction </h1>
+	</header>
+		<div class="row">
+				<div class="column" style="background-color:#00ff80; width: 25%">
+					<h1> <center>Parameters </center> </h1>
+				<h4 style="background-color: darkgray">1. Input path </h4>
+
+	<form autocomplete="on" action = "{{ url_for('main_func')}}" method = "POST" class="form" >
+	            <input type="text" name='path' placeholder="@example: C:\Users\Data\Input" autofocus required><br>
+
+	             <h4 style="background-color: darkgray">2. Select the extraction method </h4>
+                <input type="radio" name="extraction"  value="keyword" checked="" required>Keyword Search
+            	<input type="radio" name="extraction"  value="regex">Regex
+          
+	            
+            	<h4 style="background-color: darkgray">3. Provide Punctuations to remove </h4>
+                <input type="text" name='punctuations' placeholder="@example: $|&"><br>
+
+	            <h4 style="background-color: darkgray">4. Search Keyword </h4>
+	            <input type = "text" name="keyword" placeholder="@example: name, city" required>
+	            <h6> (for multiple or condition try: keyword1 or keyword2)</h6>
+	            
+	            <h4 style="background-color: darkgray">5. Filter for case </h4>
+	            <select name = "case">
+	            		<option value = 'upper'>upper</option>
+						<option value = 'lower'>lower</option>
+						<option value = 'proper'>proper</option>
+						<option value = 'all' selected>all</option>
+	            </select>
+	            <h4 style="background-color: darkgray">6. Select search range </h4>
+	            
+			  <input class="input-group-field" type="number" name="min" value="0">min
+			  <input class="input-group-field" type="number" name="max" value="0">max
+
+	            <h4 style="background-color: darkgray">7. Provide regex pattern </h4>
+	            <input type = "text" name = "regx_pattern" placeholder="@example: \d+/\d+/\d+"><br /><br />
+	            <input type = "submit" value="confirm"> </form>
+	       
+
+	</div>
+	<div class = "column" style="background-color: lightgray; width: 75%">
+{% block content %}{% endblock %}
+	</div>	
+	
+</body>
+

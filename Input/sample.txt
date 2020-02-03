@@ -1,0 +1,4 @@
+When you add a line break in HTML, you avoid this text wrapping and 
+start new text the next line. To add a line break to your HTML code, 
+you use the <br> tag. The <br> tag does not have an end tag. 
+You can also add additional lines between paragraphs by using the
